@@ -13,3 +13,4 @@ In 2016, Cyclistic introduced a successful bike-sharing service, which has since
      - `git add .gitattributes`
      - then as usual: `git add`, `git commit`, `git push`
 4. Install tidyverse, which includes ggplot2, tidyr, readr, dplyr, stringr, purrr, and forcats. 
+5. For debian-like linux install dependencies using command: `sudo apt-get install libxml2-dev libcurl4-openssl-dev libssl-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev`
