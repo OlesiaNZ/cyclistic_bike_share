@@ -12,3 +12,4 @@ In 2016, Cyclistic introduced a successful bike-sharing service, which has since
      - `git lfs track *.csv`
      - `git add .gitattributes`
      - then as usual: `git add`, `git commit`, `git push`
+4. Install tidyverse, which includes ggplot2, tidyr, readr, dplyr, stringr, purrr, and forcats. 
