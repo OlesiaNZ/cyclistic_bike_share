@@ -15,3 +15,5 @@ In 2016, Cyclistic introduced a successful bike-sharing service, which has since
 4. Install tidyverse, which includes ggplot2, tidyr, readr, dplyr, stringr, purrr, and forcats. 
 5. For debian-like linux install dependencies using command: `sudo apt-get install libxml2-dev libcurl4-openssl-dev libssl-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev`
 6. Import 12 csv files to 12 data frames in R and do a test to make sure that in works in VS Code
+7. Create a list of 12 data frames to check if all data frames have the same column names.
+8. Do the checking using `if-else`
