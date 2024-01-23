@@ -17,3 +17,7 @@ In 2016, Cyclistic introduced a successful bike-sharing service, which has since
 6. Import 12 csv files to 12 data frames in R and do a test to make sure that in works in VS Code
 7. Create a list of 12 data frames to check if all data frames have the same column names.
 8. Do the checking using `if-else`
+9. Clean column names for each data frame in the list
+``` {r}
+clean_data_frames_list <- map(data_frames_list, ~clean_names(.)) 
+```
