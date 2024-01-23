@@ -41,5 +41,22 @@ clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 # Now clean_data_frames_list contains data frames with cleaned column names
 names(clean_data_frames_list[[1]])
 
+# Row-wise merge for a list of data frames
+data_frame_2023 <- do.call(rbind, clean_data_frames_list )
+
+# Check the merged dataset
+view(head(data_frame_2023, 10))
+
+
+# Check for duplicates
+ get_dupes(data_frame_2023, ride_id, rideable_type, 
+         started_at, ended_at, start_station_name, 
+         start_station_id, end_station_name, end_station_id, start_lat, 
+         start_lng, end_lat, end_lng)
+
+# Print the number of rows
+print(nrow(data_frame_2023))
+
+
 
 
