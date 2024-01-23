@@ -23,4 +23,6 @@ clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 ```
 10. Another option to do the same with `compare_df_cols_same` function. It returns TRUE
 
-11. Hunting down and examining duplicate records during data cleaning using `get_dupes` function
+11. Combine 12 datasets into 1 dataset using `rbind()`
+
+12. Hunting down and examining duplicate records during data cleaning using `get_dupes()` function
