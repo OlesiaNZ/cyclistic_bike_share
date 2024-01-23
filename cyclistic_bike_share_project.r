@@ -57,6 +57,10 @@ view(head(data_frame_2023, 10))
 # Print the number of rows
 print(nrow(data_frame_2023))
 
+# Remove rows with NA
+data_frame_2023 <- na.omit(data_frame_2023)
+print(colSums(is.na(data_frame_2023)))
+
 
 
 
