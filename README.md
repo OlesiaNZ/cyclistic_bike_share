@@ -21,3 +21,5 @@ In 2016, Cyclistic introduced a successful bike-sharing service, which has since
 ``` {r}
 clean_data_frames_list <- map(data_frames_list, ~clean_names(.)) 
 ```
+10. Another option to do the same with compare_df_cols_same function. It returns TRUE
+

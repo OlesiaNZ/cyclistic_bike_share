@@ -33,6 +33,9 @@ if (all_same_columns) {
   print("Some data frames have different column names.")
 }
 
+#Another option to do the same with compare_df_cols_same function. It returns TRUE
+compare_df_cols_same(data_frames_list)
+
 # Clean column names for each data frame in the list
 clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 # Now clean_data_frames_list contains data frames with cleaned column names
