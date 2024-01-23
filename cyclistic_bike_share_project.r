@@ -32,3 +32,11 @@ if (all_same_columns) {
 } else {
   print("Some data frames have different column names.")
 }
+
+# Clean column names for each data frame in the list
+clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
+# Now clean_data_frames_list contains data frames with cleaned column names
+names(clean_data_frames_list[[1]])
+
+
+
