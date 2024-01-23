@@ -19,3 +19,16 @@ data_frame_oct <- read.csv("Trip_data_10_2023.csv")
 data_frame_nov <- read.csv("Trip_data_11_2023.csv")
 data_frame_dec <- read.csv("Trip_data_12_2023.csv")
 
+# Create a list of data frames
+data_frames_list <- list(data_frame_jan, data_frame_feb, data_frame_mar, data_frame_apr,
+                data_frame_may, data_frame_june, data_frame_july, data_frame_aug,
+                data_frame_sept, data_frame_oct, data_frame_nov, data_frame_dec)
+
+# Check if all data frames have the same column names
+all_same_columns <- all(sapply(data_frames_list[-1], function(df) identical(colnames(data_frame_jan), colnames(df))))
+
+if (all_same_columns) {
+  print("All data frames have the same column names.")
+} else {
+  print("Some data frames have different column names.")
+}
