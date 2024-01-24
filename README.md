@@ -37,3 +37,5 @@ clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 12. Hunting down and examining duplicate records during data cleaning using `get_dupes()` function
 
 13. Remove rows with missing value
+
+14. Separate started_at column into 2 columns started_date with date format year-month-day and started_time with time format hour:minutes:seconds
