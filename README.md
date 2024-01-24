@@ -39,3 +39,5 @@ clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 13. Remove rows with missing value
 
 14. Separate started_at column into 2 columns started_date with date format year-month-day and started_time with time format hour:minutes:seconds
+
+15. Do the same with ended_at column
