@@ -66,10 +66,10 @@ data_frame_2023 <- data_frame_2023 %>%
   mutate(started_at = as.character(started_at)) %>%
   separate(started_at, into = c("started_date", "started_time"), sep = " ")
 
-# Convert 'started_date' to Date type and 'started_time' to POSIXct type
-data_frame_2023$started_date <- as.Date(data_frame_2023$started_date)
-#data_frame_2023$started_time <- as.POSIXct(data_frame_2023$started_time, format = "%H:%M:%S")
-data_frame_2023$started_time <- format(data_frame_2023$started_time, "%H:%M:%S")
+# Do the same with ended_at column
+data_frame_2023 <- data_frame_2023 %>%
+  mutate(ended_at = as.character(ended_at)) %>%
+  separate(ended_at, into = c("ended_date", "ended_time"), sep = " ")
 
 # View the resulting data frame
 view(head(data_frame_2023, 10))
