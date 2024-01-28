@@ -86,5 +86,5 @@ view(head(data_frame_2023, 50))
 data_frame_2023 <- mutate(data_frame_2023, ride_length = as.numeric(difftime(data_frame_2023$ended_time, data_frame_2023$started_time, units = "mins")))
 
 # Create day_of_week
-test_data_frame_2023 <- mutate(data_frame_2023, day_of_week = weekdays(data_frame_2023$started_date))
-view(head(test_data_frame_2023, 25))
+data_frame_2023 <- mutate(data_frame_2023, day_of_week = weekdays(data_frame_2023$started_date))
+
