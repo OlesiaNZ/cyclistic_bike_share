@@ -88,3 +88,10 @@ data_frame_2023 <- mutate(data_frame_2023, ride_length = as.numeric(difftime(dat
 # Create day_of_week
 data_frame_2023 <- mutate(data_frame_2023, day_of_week = weekdays(data_frame_2023$started_date))
 
+# Calculate the mean and max of ride_length
+mean_ride_length <- mean(data_frame_2023$ride_length)
+max_ride_length <- max(data_frame_2023$ride_length)
+
+# Print the results
+cat("Mean ride length:", mean_ride_length, "\n")
+cat("Max ride length:", max_ride_length, "\n")
