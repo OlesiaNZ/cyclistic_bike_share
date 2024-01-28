@@ -52,4 +52,15 @@ started
 mean_ride_length <- mean(data_frame_2023$ride_length)
 max_ride_length <- max(data_frame_2023$ride_length) 
 ```
+19.  Calculate the mode of day_of_week
+``` {r}
+# Use table to count the occurrences of each unique value
+table_day_of_week <- table(data_frame_2023$day_of_week) 
+
+# Find the index of the maximum count (mode)
+mode_index <- which.max(table_day_of_week) 
+
+# Get the mode value
+mode_value <- as.character(names(table_day_of_week)[mode_index]) 
+```
 

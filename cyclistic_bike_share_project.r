@@ -108,5 +108,4 @@ mode_index <- which.max(table_day_of_week) # Find the index of the maximum count
 
 mode_value <- as.character(names(table_day_of_week)[mode_index]) # Get the mode value
 
-# Print the mode
 cat("Mode:", mode_value, "\n")
