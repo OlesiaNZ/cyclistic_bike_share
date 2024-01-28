@@ -43,3 +43,6 @@ clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 15. Do the same with ended_at column
 
 16. Create ride_length column which has the trip duration in minutes
+
+17. Create column day_of_week which has the day of the week that each ride
+started
