@@ -91,7 +91,11 @@ data_frame_2023 <- mutate(data_frame_2023, day_of_week = weekdays(data_frame_202
 # Calculate the mean and max of ride_length
 mean_ride_length <- mean(data_frame_2023$ride_length)
 max_ride_length <- max(data_frame_2023$ride_length)
+# Calculate max in hours as in minutes the number is too big
+max_ride_length_in_hour <- max(data_frame_2023$ride_length)/60
+
 
 # Print the results
-cat("Mean ride length:", mean_ride_length, "\n")
-cat("Max ride length:", max_ride_length, "\n")
+cat("Mean ride length:", mean_ride_length,"minutes","\n")
+cat("Max ride length:", max_ride_length,"minutes","\n")
+cat("Max ride length:", max_ride_length_in_hour,"hours","\n")
