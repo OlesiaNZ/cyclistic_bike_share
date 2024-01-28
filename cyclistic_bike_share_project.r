@@ -2,6 +2,8 @@ install.packages("tidyverse")
 library(tidyverse)
 install.packages("janitor")
 library(janitor)
+install.packages("lubridate")
+library(lubridate)
 
 
 data_frame_jan <- read.csv("Trip_data_01_2023.csv")
@@ -82,3 +84,7 @@ view(head(data_frame_2023, 50))
 
 # Create ride_length
 data_frame_2023 <- mutate(data_frame_2023, ride_length = as.numeric(difftime(data_frame_2023$ended_time, data_frame_2023$started_time, units = "mins")))
+
+# Create day_of_week
+test_data_frame_2023 <- mutate(data_frame_2023, day_of_week = weekdays(data_frame_2023$started_date))
+view(head(test_data_frame_2023, 25))
