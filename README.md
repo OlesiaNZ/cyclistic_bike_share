@@ -46,3 +46,10 @@ clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 
 17. Create column day_of_week which has the day of the week that each ride
 started
+
+18. Calculate the mean and max of ride_length:
+``` {r}
+mean_ride_length <- mean(data_frame_2023$ride_length)
+max_ride_length <- max(data_frame_2023$ride_length) 
+```
+
