@@ -81,4 +81,4 @@ data_frame_2023$ended_time <- as.POSIXct(data_frame_2023$ended_time, format = "%
 view(head(data_frame_2023, 50))
 
 # Create ride_length
-test_num_data_frame_2023 <- mutate(data_frame_2023, ride_length = as.numeric(difftime(data_frame_2023$ended_time, data_frame_2023$started_time, units = "mins")))
+data_frame_2023 <- mutate(data_frame_2023, ride_length = as.numeric(difftime(data_frame_2023$ended_time, data_frame_2023$started_time, units = "mins")))
