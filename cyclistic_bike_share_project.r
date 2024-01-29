@@ -120,7 +120,16 @@ print(average_ride_length)
 # Sort by member_casual and day_of_week from Monday to Sunday
 average_ride_by_weekday <- data_frame_2023 %>%
   group_by(member_casual, day_of_week) %>%
-  summarize(average_ride_by_weekday = mean(ride_length))
+  summarize(average_ride_by_weekday = mean(ride_length))%>%
+  mutate(day_of_week = factor(day_of_week, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"), ordered = TRUE)) %>%
+  arrange(member_casual, day_of_week)
 print(average_ride_by_weekday) 
+
+# Calculate the number of rides for users by day_of_week
+number_of_rides <- data_frame_2023 %>%
+  group_by(member_casual, day_of_week) %>%
+  mutate(day_of_week = factor(day_of_week, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"), ordered = TRUE)) %>%
+  summarize(number_of_rides = n())
+print(number_of_rides)
 
 

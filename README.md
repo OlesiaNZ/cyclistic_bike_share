@@ -92,3 +92,5 @@ See the result:
  |  member       |    Saturday    |    6.25 min   |
  |  member       |    Sunday      |   10.0  min   |
     
+
+
