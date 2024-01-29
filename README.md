@@ -93,4 +93,24 @@ See the result:
  |  member       |    Sunday      |   10.0  min   |
     
 
+22. Calculate the number of rides for users by day_of_week
+See the result:
+
+  | member_casual  |  day_of_week      | number of rides   |  
+  |--------------- |  ---------------  | ----------------- |
+  |    casual      |    Monday         |      234'198      |
+  |    casual      |    Tuesday        |      245'604      |
+  |    casual      |    Wednesday      |      248'568      |
+  |    casual      |    Thursday       |      269'916      |
+  |    casual      |    Friday         |      311'081      |
+  |    casual      |    Saturday       |      409'415      |
+  |    casual      |    Sunday         |      334'525      |
+  |    member      |    Monday         |      494'435      |
+  |    member      |    Tuesday        |      576'588      |
+  |    member      |    Wednesday      |      586'294      |
+  |    member      |    Thursday       |      589'420      |
+  |    member      |    Friday         |      531'432      |
+  |    member      |    Saturday       |      472'696      |
+  |    member      |    Sunday         |      408'715      |
+
 
