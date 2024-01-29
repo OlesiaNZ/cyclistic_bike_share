@@ -1,0 +1,22 @@
+# Build: `docker build -t mysql-workbench -f docker/Dockerfile.mysql-workbench docker`
+# Run: `docker run --rm -it -v/tmp/.X11-unix:/tmp/.X11-unix -v${XAUTHORITY}:/home/user/.Xauthority:ro -eDISPLAY=${DISPLAY} --network=host mysql-workbench mysql-workbench`
+
+# See https://linux.how2shout.com/2-ways-to-install-mysql-workbench-on-debian-11-bullseye-linux/
+FROM debian:sid-slim
+
+# Install pre-dependencies
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    mysql-workbench \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create default user, due to:
+#   - Build and test artifacts have user permissions and not root permissions
+#   - Don't give root privileges from host to containers (security)
+ARG USER=user
+ARG UID=1000
+ARG GID=1000
+RUN useradd -m ${USER} --uid=${UID}
+USER ${UID}:${GID}
+
+# Project workspace
+WORKDIR /project
