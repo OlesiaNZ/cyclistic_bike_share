@@ -67,8 +67,28 @@ mode_value <- as.character(names(table_day_of_week)[mode_index])
 20. Calculate the average ride_length in minutes for members and casual riders.  
 See the result:
 
-|  <chr>   |   <dbl>   |
-| -------  | --------  | 
-| casual   |   11.0 min|
-| member   |   8.25 min| 
+| member_casual | ride_length|
+| ------------  |  --------  | 
+| casual        |    11.0 min|
+| member        |    8.25 min| 
 
+21. Calculate the average ride_length for users by day_of_week.
+See the result:
+
+ | member_casual |   day_of_week  |  ride_length  |
+ | --------      | ---------------|-------------- |
+ |  casual       |    Monday      |   13.5  min   |
+ |  casual       |    Tuesday     |   11.8  min   |
+ |  casual       |    Wednesday   |   10.0  min   |
+ |  casual       |    Thursday    |    9.39 min   |
+ |  casual       |    Friday      |    5.90 min   |
+ |  casual       |    Saturday    |    9.81 min   |
+ |  casual       |    Sunday      |   16.8  min   |
+ |  member       |    Monday      |    8.89 min   |
+ |  member       |    Tuesday     |    9.27 min   |
+ |  member       |    Wednesday   |    8.86 min   |
+ |  member       |    Thursday    |    8.02 min   |
+ |  member       |    Friday      |    6.52 min   |
+ |  member       |    Saturday    |    6.25 min   |
+ |  member       |    Sunday      |   10.0  min   |
+    
