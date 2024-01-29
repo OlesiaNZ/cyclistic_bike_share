@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     mysql-workbench \
     dbus-x11 \
     gnome-keyring \
+    lsb-core \
     && rm -rf /var/lib/apt/lists/*
 
 # Create default user, due to:
