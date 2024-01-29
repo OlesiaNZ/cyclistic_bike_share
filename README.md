@@ -64,3 +64,11 @@ mode_index <- which.max(table_day_of_week)
 mode_value <- as.character(names(table_day_of_week)[mode_index]) 
 ```
 
+20. Calculate the average ride_length in minutes for members and casual riders.  
+See the result:
+
+|  <chr>   |   <dbl>   |
+| -------  | --------  | 
+| casual   |   11.0 min|
+| member   |   8.25 min| 
+
