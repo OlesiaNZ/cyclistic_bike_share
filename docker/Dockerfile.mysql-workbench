@@ -1,5 +1,5 @@
 # Build: `docker build -t mysql-workbench -f docker/Dockerfile.mysql-workbench docker`
-# Run: `docker run --rm -it -v/tmp/.X11-unix:/tmp/.X11-unix -v${XAUTHORITY}:/home/user/.Xauthority:ro -eDISPLAY=${DISPLAY} --network=host mysql-workbench mysql-workbench`
+# Run: `docker run --rm -it -v$(pwd)/.mysql:/home/user/.mysql -v/tmp/.X11-unix:/tmp/.X11-unix -v${XAUTHORITY}:/home/user/.Xauthority:ro -eDISPLAY=${DISPLAY} --network=host mysql-workbench mysql-workbench`
 
 # See https://linux.how2shout.com/2-ways-to-install-mysql-workbench-on-debian-11-bullseye-linux/
 FROM debian:sid-slim
@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     mysql-workbench \
     dbus-x11 \
     gnome-keyring \
-    lsb-core \
+    lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
 # Create default user, due to:
