@@ -109,3 +109,10 @@ mode_index <- which.max(table_day_of_week) # Find the index of the maximum count
 mode_value <- as.character(names(table_day_of_week)[mode_index]) # Get the mode value
 
 cat("Mode:", mode_value, "\n")
+
+# Calculate the average ride_length in minutes for members and casual riders.
+average_ride_length <- data_frame_2023 %>%
+  group_by(member_casual) %>%
+  summarize(average_ride_length = mean(ride_length))
+print(average_ride_length)  
+  
