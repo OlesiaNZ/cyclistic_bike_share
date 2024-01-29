@@ -79,14 +79,14 @@ data_frame_2023 <- data_frame_2023 %>%
 data_frame_2023$ended_date <- as.Date(data_frame_2023$ended_date)
 data_frame_2023$ended_time <- as.POSIXct(data_frame_2023$ended_time, format = "%H:%M:%S")
 
-# View the resulting data frame
-view(head(data_frame_2023, 50))
-
 # Create ride_length
 data_frame_2023 <- mutate(data_frame_2023, ride_length = as.numeric(difftime(data_frame_2023$ended_time, data_frame_2023$started_time, units = "mins")))
 
 # Create day_of_week
 data_frame_2023 <- mutate(data_frame_2023, day_of_week = weekdays(data_frame_2023$started_date))
+
+# View the resulting data frame
+view(head(data_frame_2023, 50))
 
 # Calculate the mean and max of ride_length
 mean_ride_length <- mean(data_frame_2023$ride_length)
@@ -116,3 +116,9 @@ average_ride_length <- data_frame_2023 %>%
   summarize(average_ride_length = mean(ride_length))
 print(average_ride_length)  
   
+# Calculate the average ride_length for users by day_of_week.
+average_ride_by_weekday <- data_frame_2023 %>%
+  group_by(member_casual, day_of_week) %>%
+  summarize(average_ride_by_weekday = mean(ride_length))
+print(average_ride_by_weekday) 
+
