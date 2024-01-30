@@ -114,3 +114,4 @@ See the result:
   |    member      |    Sunday         |      408'715      |
 
 
+23. Remove these columns: start_station_id, end_station_id, start_lat, start_lng, end_lat, end_lng, start_station_name, end_station_name as they don't impact on analysis 
