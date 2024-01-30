@@ -132,8 +132,17 @@ number_of_rides <- data_frame_2023 %>%
   summarize(number_of_rides = n())
 print(number_of_rides)
 
-# Remove some columns
-data_frame_2023_removed <- data_frame_2023  %>% 
-    select(-c(start_station_id, end_station_id, start_lat, start_lng, end_lat, end_lng, start_station_name, end_station_name))
+#Save my previous data_frame_2023 before columns removed
+data_frame_2023_full_columns <- data_frame_2023
 
-view(head(data_frame_2023_removed))
+#Check that they are the same
+view(colnames(data_frame_2023_full_columns))
+view(colnames(data_frame_2023))
+
+# Remove some columns
+data_frame_2023 <- data_frame_2023  %>% 
+    select(-c(start_station_id, end_station_id, start_lat, start_lng, end_lat, end_lng, start_station_name, end_station_name))
+colnames(data_frame_2023)
+view(head(data_frame_2023))
+
+
