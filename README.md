@@ -38,6 +38,16 @@ clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 
 13. Remove rows with missing value
 
+14. Remove these columns: start_station_id, end_station_id, start_lat, start_lng, end_lat, end_lng, start_station_name, end_station_name as they don't impact on analysis 
+
+15. Convert started_at and ended_at from character to date format
+
+16. Create ride_length
+
+17. Find mistakes in data when ended_at are not greater than started_at
+
+
+
 14. Separate started_at column into 2 columns started_date with date format year-month-day and started_time with time format hour:minutes:seconds
 
 15. Do the same with ended_at column
