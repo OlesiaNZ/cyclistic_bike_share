@@ -63,6 +63,36 @@ print(nrow(data_frame_2023))
 data_frame_2023 <- na.omit(data_frame_2023)
 print(colSums(is.na(data_frame_2023)))
 
+# Remove some columns
+data_frame_2023 <- data_frame_2023  %>% 
+    select(-c(start_station_id, end_station_id, start_lat, start_lng, end_lat, end_lng, start_station_name, end_station_name))
+colnames(data_frame_2023)
+view(head(data_frame_2023, 32))
+
+# Convert started_at and ended_at from character to date format
+data_frame_2023$started_at <- as.POSIXct(data_frame_2023$started_at, format = "%Y-%m-%d %H:%M:%S")
+data_frame_2023$ended_at <- as.POSIXct(data_frame_2023$ended_at, format = "%Y-%m-%d %H:%M:%S")
+
+str(data_frame_2023)
+
+# Create ride_length
+data_frame_2023 <- mutate(data_frame_2023, ride_length = as.numeric(difftime(data_frame_2023$ended_at, data_frame_2023$started_at, units = "mins")))
+view(head(data_frame_2023, 52))
+
+view(summary(data_frame_2023[c('ride_length')]))
+min(data_frame_2023$ride_length)
+
+view(head(arrange(data_frame_2023, ride_length,50)))
+
+
+
+
+
+
+
+
+
+
 # Use mutate and separate to create 'started_date' and 'started_time' columns
 data_frame_2023 <- data_frame_2023 %>%
   mutate(started_at = as.character(started_at)) %>%
@@ -143,6 +173,7 @@ view(colnames(data_frame_2023))
 data_frame_2023 <- data_frame_2023  %>% 
     select(-c(start_station_id, end_station_id, start_lat, start_lng, end_lat, end_lng, start_station_name, end_station_name))
 colnames(data_frame_2023)
-view(head(data_frame_2023))
+view(head(data_frame_2023, 32))
+
 
 
