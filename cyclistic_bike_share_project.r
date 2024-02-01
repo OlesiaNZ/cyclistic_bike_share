@@ -165,3 +165,9 @@ number_of_rides <- data_frame_2023 %>%
   summarize(number_of_rides = n())
 print(number_of_rides)
 
+# Check that all values in member_casual are member or casual
+if (all(data_frame_2023$member_casual %in% c("member", "casual"))) {
+   print("All values in member_casual are member or casual")
+} else {
+   print("Not all values in member_casual are member or casual")
+}
