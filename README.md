@@ -44,11 +44,27 @@ clean_data_frames_list <- map(data_frames_list, ~clean_names(.))
 
 16. Create ride_length
 
-17. Find mistakes in data when ended_at are not greater than started_at
+17. Find and remove 353 raws with mistakes in data when ended_at are not greater than started_at
 
+18. Getting result after this function:
+```{r}
+view(summary(data_frame_2023[c('ride_length')]))
+```
+Result:
 
+Min. : 0.000 min
 
-14. Separate started_at column into 2 columns started_date with date format year-month-day and started_time with time format hour:minutes:seconds
+1st Qu.: 5.417 min
+
+Median : 9.517 min
+
+Mean : 15.159 min
+
+3rd Qu.: 16.883 min 
+
+Max. :12136.300 min 
+
+19. Separate started_at column into 2 columns started_date with date format year-month-day and started_time with time format hour:minutes:seconds
 
 15. Do the same with ended_at column
 

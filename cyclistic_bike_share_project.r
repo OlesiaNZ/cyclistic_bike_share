@@ -101,3 +101,23 @@ print(sum(data_frame_2023$ended_at < data_frame_2023$started_at))
 # View raws with mistakes
 wrong_raws <- data_frame_2023[data_frame_2023$ended_at < data_frame_2023$started_at, ]
 view(arrange(wrong_raws, ride_length))
+
+# Subset the data frame to keep only rows where ended_at >= started_at
+data_frame_2023 <- data_frame_2023[data_frame_2023$ended_at >= data_frame_2023$started_at, ]
+print(nrow(data_frame_2023))
+
+# Run these functions again with correct data
+view(summary(data_frame_2023[c('ride_length')]))
+min(data_frame_2023$ride_length)
+
+# Separate started_at and ended_at to date and time
+data_frame_2023 <- data_frame_2023 %>%
+  separate(col = started_at, into = c("started_date", "started_time"), sep = " ") %>%
+  separate(col = ended_at, into = c("ended_date", "ended_time"), sep = " ")
+
+# Convert date columns to Date type and time columns to POSIXct type
+data_frame_2023$started_date <- as.Date(data_frame_2023$started_date, format = "%Y-%m-%d")
+data_frame_2023$started_time <- as.POSIXct(data_frame_2023$started_time, format = "%H:%M:%S")
+data_frame_2023$ended_date <- as.Date(data_frame_2023$ended_date, format = "%Y-%m-%d")
+data_frame_2023$ended_time <- as.POSIXct(data_frame_2023$ended_time, format = "%H:%M:%S")
+view(head(data_frame_2023, 50))
