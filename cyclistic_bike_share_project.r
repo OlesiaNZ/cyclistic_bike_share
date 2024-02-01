@@ -73,8 +73,6 @@ view(head(data_frame_2023, 32))
 data_frame_2023$started_at <- as.POSIXct(data_frame_2023$started_at, format = "%Y-%m-%d %H:%M:%S")
 data_frame_2023$ended_at <- as.POSIXct(data_frame_2023$ended_at, format = "%Y-%m-%d %H:%M:%S")
 
-str(data_frame_2023)
-
 # Create ride_length
 data_frame_2023 <- mutate(data_frame_2023, ride_length = as.numeric(difftime(data_frame_2023$ended_at, data_frame_2023$started_at, units = "mins")))
 view(head(data_frame_2023, 52))
@@ -121,3 +119,49 @@ data_frame_2023$started_time <- as.POSIXct(data_frame_2023$started_time, format 
 data_frame_2023$ended_date <- as.Date(data_frame_2023$ended_date, format = "%Y-%m-%d")
 data_frame_2023$ended_time <- as.POSIXct(data_frame_2023$ended_time, format = "%H:%M:%S")
 view(head(data_frame_2023, 50))
+
+# Create day_of_week
+data_frame_2023 <- mutate(data_frame_2023, day_of_week = weekdays(data_frame_2023$started_date))
+view(head(data_frame_2023, 1000))
+
+# Calculate the mean and max of ride_length
+mean_ride_length <- mean(data_frame_2023$ride_length)
+max_ride_length <- max(data_frame_2023$ride_length)
+# Calculate max in hours as in minutes the number is too big
+max_ride_length_in_hour <- max(data_frame_2023$ride_length)/60
+
+# Print the results
+cat("Mean ride length:", mean_ride_length,"minutes","\n")
+cat("Max ride length:", max_ride_length,"minutes","\n")
+cat("Max ride length:", max_ride_length_in_hour,"hours","\n")
+
+# Calculate the mode of day_of_week
+
+table_day_of_week <- table(data_frame_2023$day_of_week) # Use table to count the occurrences of each unique value
+mode_index <- which.max(table_day_of_week) # Find the index of the maximum count (mode)
+mode_value <- as.character(names(table_day_of_week)[mode_index]) # Get the mode value
+
+cat("Mode:", mode_value, "\n")
+
+# Calculate the average ride_length in minutes for members and casual riders.
+average_ride_length <- data_frame_2023 %>%
+  group_by(member_casual) %>%
+  summarize(average_ride_length = mean(ride_length))
+print(average_ride_length)  
+
+# Calculate the average ride_length for users by day_of_week.
+# Sort by member_casual and day_of_week from Monday to Sunday
+average_ride_by_weekday <- data_frame_2023 %>%
+  group_by(member_casual, day_of_week) %>%
+  summarize(average_ride_by_weekday = mean(ride_length))%>%
+  mutate(day_of_week = factor(day_of_week, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"), ordered = TRUE)) %>%
+  arrange(member_casual, day_of_week)
+print(average_ride_by_weekday) 
+
+# Calculate the number of rides for users by day_of_week
+number_of_rides <- data_frame_2023 %>%
+  group_by(member_casual, day_of_week) %>%
+  mutate(day_of_week = factor(day_of_week, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"), ordered = TRUE)) %>%
+  summarize(number_of_rides = n())
+print(number_of_rides)
+
