@@ -93,5 +93,11 @@ if (all(data_frame_2023$ended_at > data_frame_2023$started_at)) {
   print("There are values in ended_at that are not greater than started_at.")
 }
 
+view(head(arrange(data_frame_2023, -ride_length),100))
 
+# Count the number of raws with incorrect data
+print(sum(data_frame_2023$ended_at < data_frame_2023$started_at))
 
+# View raws with mistakes
+wrong_raws <- data_frame_2023[data_frame_2023$ended_at < data_frame_2023$started_at, ]
+view(arrange(wrong_raws, ride_length))
