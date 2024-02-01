@@ -64,21 +64,17 @@ Mean : 15.159 min
 
 Max. :12136.300 min 
 
-19. Separate started_at column into 2 columns started_date with date format year-month-day and started_time with time format hour:minutes:seconds
+19. Separate started_at and ended_at to date and time and convert date columns to Date type and time columns to POSIXct type
 
-15. Do the same with ended_at column
-
-16. Create ride_length column which has the trip duration in minutes
-
-17. Create column day_of_week which has the day of the week that each ride
+20. Create column day_of_week which has the day of the week that each ride
 started
 
-18. Calculate the mean and max of ride_length:
+21. Calculate the mean and max of ride_length:
 ``` {r}
 mean_ride_length <- mean(data_frame_2023$ride_length)
 max_ride_length <- max(data_frame_2023$ride_length) 
 ```
-19.  Calculate the mode of day_of_week
+22.  Calculate the mode of day_of_week
 ``` {r}
 # Use table to count the occurrences of each unique value
 table_day_of_week <- table(data_frame_2023$day_of_week) 
@@ -90,53 +86,54 @@ mode_index <- which.max(table_day_of_week)
 mode_value <- as.character(names(table_day_of_week)[mode_index]) 
 ```
 
-20. Calculate the average ride_length in minutes for members and casual riders.  
+23. Calculate the average ride_length in minutes for members and casual riders.  
 See the result:
 
 | member_casual | ride_length|
 | ------------  |  --------  | 
-| casual        |    11.0 min|
-| member        |    8.25 min| 
+| casual        |    20.7 min|
+| member        |    12.1 min| 
 
-21. Calculate the average ride_length for users by day_of_week.
+24. Calculate the average ride_length for users by day_of_week.
 See the result:
 
  | member_casual |   day_of_week  |  ride_length  |
  | --------      | ---------------|-------------- |
- |  casual       |    Monday      |   13.5  min   |
- |  casual       |    Tuesday     |   11.8  min   |
- |  casual       |    Wednesday   |   10.0  min   |
- |  casual       |    Thursday    |    9.39 min   |
- |  casual       |    Friday      |    5.90 min   |
- |  casual       |    Saturday    |    9.81 min   |
- |  casual       |    Sunday      |   16.8  min   |
- |  member       |    Monday      |    8.89 min   |
- |  member       |    Tuesday     |    9.27 min   |
- |  member       |    Wednesday   |    8.86 min   |
- |  member       |    Thursday    |    8.02 min   |
- |  member       |    Friday      |    6.52 min   |
- |  member       |    Saturday    |    6.25 min   |
- |  member       |    Sunday      |   10.0  min   |
+ |  casual       |    Monday      |    20.3 min   |
+ |  casual       |    Tuesday     |    18.5 min   |
+ |  casual       |    Wednesday   |    17.7 min   |
+ |  casual       |    Thursday    |    18.0 min   |
+ |  casual       |    Friday      |    20.0 min   |
+ |  casual       |    Saturday    |    23.4 min   |
+ |  casual       |    Sunday      |    24.0 min   |
+ |  member       |    Monday      |    11.5 min   |
+ |  member       |    Tuesday     |    11.6 min   |
+ |  member       |    Wednesday   |    11.5 min   |
+ |  member       |    Thursday    |    11.6 min   |
+ |  member       |    Friday      |    12.0 min   |
+ |  member       |    Saturday    |    13.4 min   |
+ |  member       |    Sunday      |    13.5 min   |
     
 
-22. Calculate the number of rides for users by day_of_week
+25. Calculate the number of rides for users by day_of_week
 See the result:
 
   | member_casual  |  day_of_week      | number of rides   |  
   |--------------- |  ---------------  | ----------------- |
-  |    casual      |    Monday         |      234'198      |
-  |    casual      |    Tuesday        |      245'604      |
-  |    casual      |    Wednesday      |      248'568      |
-  |    casual      |    Thursday       |      269'916      |
-  |    casual      |    Friday         |      311'081      |
-  |    casual      |    Saturday       |      409'415      |
-  |    casual      |    Sunday         |      334'525      |
-  |    member      |    Monday         |      494'435      |
-  |    member      |    Tuesday        |      576'588      |
-  |    member      |    Wednesday      |      586'294      |
-  |    member      |    Thursday       |      589'420      |
-  |    member      |    Friday         |      531'432      |
-  |    member      |    Saturday       |      472'696      |
-  |    member      |    Sunday         |      408'715      |
+  |    casual      |    Monday         |      234'188      |
+  |    casual      |    Tuesday        |      245'591      |
+  |    casual      |    Wednesday      |      248'555      |
+  |    casual      |    Thursday       |      269'900      |
+  |    casual      |    Friday         |      311'063      |
+  |    casual      |    Saturday       |      409'393      |
+  |    casual      |    Sunday         |      334'428      |
+  |    member      |    Monday         |      494'417      |
+  |    member      |    Tuesday        |      576'577      |
+  |    member      |    Wednesday      |      586'273      |
+  |    member      |    Thursday       |      589'402      |
+  |    member      |    Friday         |      531'415      |
+  |    member      |    Saturday       |      472'682      |
+  |    member      |    Sunday         |      408'650      |
+
 
 
