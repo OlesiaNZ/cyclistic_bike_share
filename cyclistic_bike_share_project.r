@@ -176,4 +176,40 @@ number_of_rides <- data_frame_2023 %>%
   summarize(number_of_rides = n())
 print(number_of_rides)
 
+colnames(data_frame_2023)
+
+# Compare members and casual users
+aggregate(data_frame_2023$ride_length ~ data_frame_2023$user_type, FUN = mean)
+aggregate(data_frame_2023$ride_length ~ data_frame_2023$user_type, FUN = median)
+aggregate(data_frame_2023$ride_length ~ data_frame_2023$user_type, FUN = max)
+aggregate(data_frame_2023$ride_length ~ data_frame_2023$user_type, FUN = min)
+
+# Calculate mean, median, max ride lengths for each day of week
+aggregate(data_frame_2023$ride_length ~ data_frame_2023$day_of_week, FUN = mean)
+aggregate(data_frame_2023$ride_length ~ data_frame_2023$day_of_week, FUN = median)
+aggregate(data_frame_2023$ride_length ~ data_frame_2023$day_of_week, FUN = max)
+
+# Make the days of the week are in order
+data_frame_2023$day_of_week <- ordered(data_frame_2023$day_of_week, levels=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+
+# See the average ride time by each day for members vs casual users
+view(aggregate(data_frame_2023$ride_length ~ data_frame_2023$user_type + data_frame_2023$day_of_week, FUN = mean))
+
+# Visualization the number of rides by rider type
+data_frame_2023 %>% 
+  group_by(user_type, day_of_week) %>% 
+  summarise(number_of_rides = n(),
+            average_duration = mean(ride_length)) %>% 
+  arrange(user_type, day_of_week)  %>% 
+  ggplot(aes(x = day_of_week, y = number_of_rides, fill = user_type)) + geom_col(position = "dodge")
+
+# Visualization for average duration
+data_frame_2023 %>% 
+  group_by(user_type, day_of_week) %>% 
+  summarise(number_of_rides = n(),
+            average_duration = mean(ride_length)) %>% 
+  arrange(user_type, day_of_week)  %>% 
+  ggplot(aes(x = day_of_week, y = average_duration , fill = user_type)) + geom_col(position = "dodge")
+  
+
 
