@@ -136,4 +136,6 @@ See the result:
   |    member      |    Sunday         |      408'650      |
 
 
+26. Check that all values in member_casual are member or casual
+
 

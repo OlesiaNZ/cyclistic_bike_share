@@ -49,6 +49,12 @@ data_frame_2023 <- do.call(rbind, clean_data_frames_list )
 # Check the merged dataset
 view(head(data_frame_2023, 10))
 
+# Check that all values in user_type are member or casual
+if (all(data_frame_2023$user_type %in% c("member", "casual"))) {
+   print("All values in user_type are member or casual")
+} else {
+   print("Not all values in user_type are member or casual")
+}
 
 # Check for duplicates
  get_dupes(data_frame_2023, ride_id, rideable_type, 
@@ -68,6 +74,10 @@ data_frame_2023 <- data_frame_2023  %>%
     select(-c(start_station_id, end_station_id, start_lat, start_lng, end_lat, end_lng, start_station_name, end_station_name))
 colnames(data_frame_2023)
 view(head(data_frame_2023, 32))
+
+# Rename member_casual column to user_type
+data_frame_2023 <- rename(data_frame_2023, user_type = member_casual)
+view(head(data_frame_2023, 50))
 
 # Convert started_at and ended_at from character to date format
 data_frame_2023$started_at <- as.POSIXct(data_frame_2023$started_at, format = "%Y-%m-%d %H:%M:%S")
@@ -124,9 +134,10 @@ view(head(data_frame_2023, 50))
 data_frame_2023 <- mutate(data_frame_2023, day_of_week = weekdays(data_frame_2023$started_date))
 view(head(data_frame_2023, 1000))
 
-# Calculate the mean and max of ride_length
+# Descriptive analysis on ride_length
 mean_ride_length <- mean(data_frame_2023$ride_length)
 max_ride_length <- max(data_frame_2023$ride_length)
+min_ride_length <- min(data_frame_2023$ride_length)
 # Calculate max in hours as in minutes the number is too big
 max_ride_length_in_hour <- max(data_frame_2023$ride_length)/60
 
@@ -134,9 +145,9 @@ max_ride_length_in_hour <- max(data_frame_2023$ride_length)/60
 cat("Mean ride length:", mean_ride_length,"minutes","\n")
 cat("Max ride length:", max_ride_length,"minutes","\n")
 cat("Max ride length:", max_ride_length_in_hour,"hours","\n")
+cat("Min ride length:", min_ride_length,"minutes","\n")
 
 # Calculate the mode of day_of_week
-
 table_day_of_week <- table(data_frame_2023$day_of_week) # Use table to count the occurrences of each unique value
 mode_index <- which.max(table_day_of_week) # Find the index of the maximum count (mode)
 mode_value <- as.character(names(table_day_of_week)[mode_index]) # Get the mode value
@@ -145,29 +156,24 @@ cat("Mode:", mode_value, "\n")
 
 # Calculate the average ride_length in minutes for members and casual riders.
 average_ride_length <- data_frame_2023 %>%
-  group_by(member_casual) %>%
+  group_by(user_type) %>%
   summarize(average_ride_length = mean(ride_length))
 print(average_ride_length)  
 
 # Calculate the average ride_length for users by day_of_week.
-# Sort by member_casual and day_of_week from Monday to Sunday
+# Sort by user_type and day_of_week from Monday to Sunday
 average_ride_by_weekday <- data_frame_2023 %>%
-  group_by(member_casual, day_of_week) %>%
+  group_by(user_type, day_of_week) %>%
   summarize(average_ride_by_weekday = mean(ride_length))%>%
   mutate(day_of_week = factor(day_of_week, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"), ordered = TRUE)) %>%
-  arrange(member_casual, day_of_week)
+  arrange(user_type, day_of_week)
 print(average_ride_by_weekday) 
 
 # Calculate the number of rides for users by day_of_week
 number_of_rides <- data_frame_2023 %>%
-  group_by(member_casual, day_of_week) %>%
+  group_by(user_type, day_of_week) %>%
   mutate(day_of_week = factor(day_of_week, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"), ordered = TRUE)) %>%
   summarize(number_of_rides = n())
 print(number_of_rides)
 
-# Check that all values in member_casual are member or casual
-if (all(data_frame_2023$member_casual %in% c("member", "casual"))) {
-   print("All values in member_casual are member or casual")
-} else {
-   print("Not all values in member_casual are member or casual")
-}
+
