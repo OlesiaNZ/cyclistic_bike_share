@@ -136,6 +136,8 @@ See the result:
   |    member      |    Sunday         |      408'650      |
 
 
-26. Check that all values in member_casual are member or casual
+26. Do practice in visualization in R
+
+27. Put cleaned data to csv file
 
 
