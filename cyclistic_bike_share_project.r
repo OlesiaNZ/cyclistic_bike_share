@@ -215,9 +215,13 @@ write.csv(data_frame_2023, file = 'data_frame_2023.csv')
 data_frame_2023$ride_length <- round(data_frame_2023$ride_length, digits = 2)
 view(head(data_frame_2023, 50))
 
-temp_data_frame_2023 <- temp_data_frame_2023 %>%
+# Check if the months in the 'started_date' and 'ended_date' columns are the same
+data_frame_2023 <- data_frame_2023 %>%
   mutate(start_month = format(started_date, "%m"),
          end_month = format(ended_date, "%m"),
          months_match = ifelse(start_month == end_month, "Yes", "No"))
 
-print(filter(temp_data_frame_2023, months_match == "No"))
+view(filter(data_frame_2023, months_match == "No"))
+
+data_frame_2023$started_time <- format(data_frame_2023$started_time, "%H:%M:%S")
+data_frame_2023$ended_time <- format(data_frame_2023$ended_time, "%H:%M:%S")
