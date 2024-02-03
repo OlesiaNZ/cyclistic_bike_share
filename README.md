@@ -141,3 +141,4 @@ See the result:
 27. Put cleaned data to csv file
 
 
+28. Found that ride_length has values in different lengths of trip duration like 8.5689, 8.3333333, 8.5. Make then round with 2 digits after dot. 
