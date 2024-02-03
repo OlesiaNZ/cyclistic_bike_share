@@ -210,8 +210,6 @@ data_frame_2023 %>%
   arrange(user_type, day_of_week)  %>% 
   ggplot(aes(x = day_of_week, y = average_duration , fill = user_type)) + geom_col(position = "dodge")
 
-write.csv(data_frame_2023, file = 'data_frame_2023.csv')
-
 data_frame_2023$ride_length <- round(data_frame_2023$ride_length, digits = 2)
 view(head(data_frame_2023, 50))
 
@@ -225,3 +223,5 @@ view(filter(data_frame_2023, months_match == "No"))
 
 data_frame_2023$started_time <- format(data_frame_2023$started_time, "%H:%M:%S")
 data_frame_2023$ended_time <- format(data_frame_2023$ended_time, "%H:%M:%S")
+
+write.csv(data_frame_2023, file = 'data_frame_2023.csv')
