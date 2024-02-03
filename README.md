@@ -142,3 +142,5 @@ See the result:
 
 
 28. Found that ride_length has values in different lengths of trip duration like 8.5689, 8.3333333, 8.5. Make then round with 2 digits after dot. 
+
+29. Check if the months in the 'started_date' and 'ended_date' columns are the same. All month are the same. 
