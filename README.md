@@ -138,9 +138,10 @@ See the result:
 
 26. Do practice in visualization in R
 
-27. Put cleaned data to csv file
+27. Found that ride_length has values in different lengths of trip duration like 8.5689, 8.3333333, 8.5. Make then round with 2 digits after dot. 
 
+28. Check if the months in the 'started_date' and 'ended_date' columns are the same. All month are not the same. 
 
-28. Found that ride_length has values in different lengths of trip duration like 8.5689, 8.3333333, 8.5. Make then round with 2 digits after dot. 
+29. Remove today date from started_time and ended_time
 
-29. Check if the months in the 'started_date' and 'ended_date' columns are the same. All month are the same. 
+30. Put cleaned data to csv file
