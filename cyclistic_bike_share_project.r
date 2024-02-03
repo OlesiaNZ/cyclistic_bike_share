@@ -198,8 +198,7 @@ view(aggregate(data_frame_2023$ride_length ~ data_frame_2023$user_type + data_fr
 # Visualization the number of rides by rider type
 data_frame_2023 %>% 
   group_by(user_type, day_of_week) %>% 
-  summarise(number_of_rides = n(),
-            average_duration = mean(ride_length)) %>% 
+  summarise(number_of_rides = n()) %>% 
   arrange(user_type, day_of_week)  %>% 
   ggplot(aes(x = day_of_week, y = number_of_rides, fill = user_type)) + geom_col(position = "dodge")
 
@@ -210,7 +209,6 @@ data_frame_2023 %>%
             average_duration = mean(ride_length)) %>% 
   arrange(user_type, day_of_week)  %>% 
   ggplot(aes(x = day_of_week, y = average_duration , fill = user_type)) + geom_col(position = "dodge")
-  
 
 write.csv(data_frame_2023, file = 'data_frame_2023.csv')
 
