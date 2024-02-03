@@ -212,6 +212,14 @@ data_frame_2023 %>%
   ggplot(aes(x = day_of_week, y = average_duration , fill = user_type)) + geom_col(position = "dodge")
   
 
+write.csv(data_frame_2023, file = 'data_frame_2023.csv')
 
 data_frame_2023$ride_length <- round(data_frame_2023$ride_length, digits = 2)
 view(head(data_frame_2023, 50))
+
+temp_data_frame_2023 <- temp_data_frame_2023 %>%
+  mutate(start_month = format(started_date, "%m"),
+         end_month = format(ended_date, "%m"),
+         months_match = ifelse(start_month == end_month, "Yes", "No"))
+
+print(filter(temp_data_frame_2023, months_match == "No"))
