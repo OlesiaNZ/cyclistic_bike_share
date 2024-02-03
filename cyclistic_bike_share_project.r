@@ -213,3 +213,5 @@ data_frame_2023 %>%
   
 
 
+data_frame_2023$ride_length <- round(data_frame_2023$ride_length, digits = 2)
+view(head(data_frame_2023, 50))
